@@ -11,14 +11,14 @@ void pushQueue(templatePriorityQueue<T>* Que, int data){
 }
 
 template<typename T>
-void popQueue(templatePriorityQueue<T>* Que){
+T popQueue(templatePriorityQueue<T>* Que){
 	cout << "[+] Integer "<< Que->top() << " will be poped from the Priority Queue." << endl;
-	Que->pop();
+	return Que->pop();
 }
 
 int main(int argc, char* argv[]){
 	templatePriorityQueue<int> priQueue;
-	int customNumber = 0;
+	int custom_number = 0;
 
 	//empty check
 	if(priQueue.empty()){
@@ -30,25 +30,22 @@ int main(int argc, char* argv[]){
 	pushQueue(&priQueue,598);
 	pushQueue(&priQueue,302);
 
-	if( argc > 1 ){
-		customNumber = atoi(argv[1]);
-		if( customNumber > -500 && customNumber < 2000 ){
-			pushQueue(&priQueue,customNumber);
-		}
-		else{
+	if (argc > 1) {
+		custom_number = atoi(argv[1]);
+		if (custom_number > -500 && custom_number < 2000) {
+			pushQueue(&priQueue,custom_number);
+		} else {
 			pushQueue(&priQueue,-1);
 		}
-	}
-	else{
+	} else {
 		pushQueue(&priQueue,-1);
 	}
 
 	//empty & size
-	if(priQueue.empty()){
+	if (priQueue.empty()) {
 		cout << "[-] Priority Queue is empty. - Push method did not work!" << endl;
 		return -1;
-	}
-	else{
+	} else {
 		cout << "[+] Priority Queue has data. - Queue Size : " << priQueue.size() <<endl;
 	}
 
